@@ -15,7 +15,12 @@ public class Main {
         System.out.println("GIT LOG");
         System.out.println("GIT CLONE");
         System.out.println("GIT FETCH");
-        System.out.println("GIT SWITCH -");
+        System.out.println("GIT SWITCH -c");
+
+        System.out.println("GIT CLONE");
+        System.out.println("GIT FETCH");
+        System.out.println("GIT SWITCH -c");
+
 
     }
 }
