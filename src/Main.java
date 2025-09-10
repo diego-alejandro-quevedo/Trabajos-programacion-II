@@ -2,6 +2,9 @@ import java.util.*;
 
 public class Main {
 
+   public static Scanner scn=new Scanner(System.in);
+   public static Random random =new Random();
+
     public static void main(String[] args) {
 
         menu();
@@ -10,15 +13,13 @@ public class Main {
 
     public static void menu(){
 
-        Scanner scn=new Scanner(System.in);
+
         boolean estado=true;
         while(estado){
 
-            System.out.println("Ingrese el numero del ejercicio que desea ejecutar\n1. juego de dos dados\n2. juego de tres dados\n3. Indice de masa corporal\n6.salir");
+            System.out.println("Ingrese el numero del ejercicio que desea ejecutar\n1. juego de dos dados\n2. juego de tres dados\n3. Indice de masa corporal\n4. adivina el numero\n6.salir");
 
             int opcion=scn.nextInt();
-
-
 
             switch (opcion){
 
@@ -40,6 +41,12 @@ public class Main {
 
                     break;
 
+                case 4:
+
+                    System.out.println(adivino());
+
+                    break;
+
                 case 6:
                     estado=false;
                     break;
@@ -55,7 +62,7 @@ public class Main {
     public static void dosdados(){
         System.out.println("entro en el juego de 2 dados");
 
-        Random random =new Random();
+
 
         int dado1,dado2,sum1,sum2;
 
@@ -94,8 +101,6 @@ public class Main {
     }
 
     public static void tresdados(){
-
-        Random random =new Random();
 
         int dado1,dado2,dado3,sum1,sum2, sum3;
 
@@ -155,8 +160,6 @@ public class Main {
 
     public static  String indice(){
 
-        Scanner scn=new Scanner(System.in);
-
         double altura,peso,imc;
 
         System.out.println("ingrese el peso de la persona (Kg)");
@@ -168,34 +171,56 @@ public class Main {
         imc=peso/(Math.pow(altura,2));
 
         if (imc<18.5){
-            return"la cituacion des de bajo peso";
+            return"la cituacion es de bajo peso";
         }
         else if(imc>=18.5 && imc<=24.9){
-            return"la cituacion des de peso normal";
+            return"la cituacion es de peso normal";
         }
 
         else if(imc>=25 && imc<=26.9){
-            return"la cituacion des de sobre peso de grado 1";
+            return"la cituacion es de sobre peso de grado 1";
         }
 
         else if(imc>=27 && imc<=29.9){
-            return"la cituacion des de sobre peso de grado 2";
+            return"la cituacion es de sobre peso de grado 2";
         }
 
         else if(imc>=30 && imc<=34.9){
-            return "la cituacion des de obecidad de grado 1";
+            return "la cituacion es de obecidad de grado 1";
         }
         else if(imc>=35 && imc<=39.9){
-            return "la cituacion des de obecidad de grado 2";
+            return "la cituacion es de obecidad de grado 2";
         }
         else if(imc>=40 && imc<=49.9){
-            return "la cituacion des de obecidad de grado 3(obecidad morvida)";
+            return "la cituacion es de obecidad de grado 3(obecidad morvida)";
         }
         else{
-            return "la cituacion des de obecidad de grado 4(obecidad extrema)";
+            return "la cituacion es de obecidad de grado 4(obecidad extrema)";
         }
 
 
+    }
+
+    public static  String adivino(){
+
+        int opcion,jugador;
+
+        opcion= random.nextInt((5-1)+1)+1;
+
+        for(int i=1;i<=3;i++){
+            System.out.println("Intento: "+i+" de 3");
+
+            System.out.println("ingrece un numero de 1 al 5");
+            jugador= scn.nextInt();
+
+            if(jugador==opcion){
+                return "Felicidades el nuero coincide \n"+"jugador: "+jugador+"\n"+"Maquina: "+opcion;
+            }
+            else{
+                System.out.println("vuelve a intentar");
+            }
+        }
+            return "fin del juego";
     }
 
 }
