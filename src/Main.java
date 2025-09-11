@@ -17,7 +17,7 @@ public class Main {
         boolean estado=true;
         while(estado){
 
-            System.out.println("Ingrese el numero del ejercicio que desea ejecutar\n1. juego de dos dados\n2. juego de tres dados\n3. Indice de masa corporal\n4. adivina el numero\n6.salir");
+            System.out.println("Ingrese el numero del ejercicio que desea ejecutar\n1. juego de dos dados\n2. juego de tres dados\n3. Indice de masa corporal\n4. adivina el numero\n5.juego de diferencia de puntos \n6.salir");
 
             int opcion=scn.nextInt();
 
@@ -44,6 +44,12 @@ public class Main {
                 case 4:
 
                     System.out.println(adivino());
+
+                    break;
+
+                case 5:
+
+                    System.out.println(juegopuntos());
 
                     break;
 
@@ -222,5 +228,74 @@ public class Main {
         }
             return "fin del juego";
     }
+
+    public static String juegopuntos(){
+
+        int jugador1=0;
+        int jugador2=0;
+        int dado1,dado2,res;
+
+        boolean act=true;
+
+       while (act){
+       //for(int i=1;i<=3;i++){
+
+           dado1=random.nextInt((6-1)+1)+1;
+           dado2=random.nextInt((6-1)+1)+1;
+           System.out.println("dado1: "+dado1);
+           System.out.println("dado2: "+dado2);
+
+           if(dado1==1){
+               jugador1=jugador1-dado1;
+               System.out.println("puntos1:"+jugador1);
+           }
+           else if(dado1==6) {
+               jugador1=jugador1+6;
+               System.out.println("puntos1:"+jugador1);
+           }
+           else{
+
+               jugador1= jugador1+dado1;
+               System.out.println("puntos1:"+jugador1);
+           }
+
+
+           if(dado2==1){
+               jugador2=jugador2-dado2;
+               System.out.println("puntos2:"+jugador2);
+           } else if (dado2==6) {
+               jugador2=jugador2+6;
+               System.out.println("puntos2:"+jugador2);
+
+           }
+           else{
+
+               jugador2= jugador2+dado2;
+               System.out.println("puntos2:"+jugador2);
+           }
+
+           if (jugador1>jugador2){
+               res=jugador1-jugador2;
+               System.out.println("resultado1 "+res);
+               if (res>=3){
+                   System.out.println("el ganador es el jugador1 ");
+                   act=false;
+               }
+           }
+
+           else {
+                   res=jugador2-jugador1;
+                   System.out.println("resultado2 "+res);
+                   if (res>=3){
+                       System.out.println("el ganador es el jugador2 ");
+                       act=false;
+                   }
+               }
+
+
+       }
+       return "fin del juego";
+    }
+
 
 }
